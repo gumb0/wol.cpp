@@ -14,7 +14,6 @@
 
 namespace
 {
-    // TODO make noncopyable
     class socket_handle
     {
     public:
@@ -161,8 +160,7 @@ int main(int argc, char * const argv[])
                         throw std::runtime_error(std::string("Unknown option '-") + static_cast<char>(optopt) + "'");
                     }
                 default:
-                    // TODO
-                    abort();
+                    throw std::runtime_error("Internal error");
             }
         }
 
