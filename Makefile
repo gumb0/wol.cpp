@@ -8,10 +8,7 @@ CXXFLAGS = -Wall -Os -DNDEBUG -std=c++11
 all: $(PROGRAM)
 
 clean:
-	$(RM) $(OBJECTS)
-
-mrproper: clean
-	$(RM) $(PROGRAM)
+	$(RM) $(OBJECTS) $(PROGRAM)
 
 .cpp.o:
 	$(COMPILE.cpp) $< -o $@
