@@ -75,8 +75,7 @@ int main(int argc, char * const argv[])
             return 1;
         }
     }
-    catch(const std::exception& e)
-    {
+    catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
         return 1;
     }
@@ -90,14 +89,15 @@ static std::string get_ether(const std::string& hardware_addr);
 namespace
 {
     // TODO make noncopyable
-    class socket_handle {
+    class socket_handle
+    {
     public:
         explicit socket_handle(int descriptor) : _descriptor(descriptor) {
             if (_descriptor < 0)
                 throw std::runtime_error("Failed to open socket");
         }
 
-        int get() const  {
+        int get() const {
             return _descriptor;
         }
 
@@ -119,7 +119,7 @@ void send_wol(const std::string& hardware_addr, unsigned port, unsigned long bca
 
     // Build the message to send.
     //   (6 * 0XFF followed by 16 * destination address.) 
-    std::string message{6, static_cast<char>(0xFF)};
+    std::string message(6, 0xFF);
     for (size_t i = 0; i < 16; ++i) {
         message += ether_addr;
     }
