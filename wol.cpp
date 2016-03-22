@@ -22,6 +22,8 @@ namespace
             if (_descriptor < 0)
                 throw std::runtime_error("Failed to open socket");
         }
+        socket_handle(const socket_handle&) = delete;
+        socket_handle& operator=(const socket_handle&) = delete;
 
         int get() const {
             return _descriptor;
